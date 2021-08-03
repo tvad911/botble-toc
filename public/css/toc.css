@@ -1,0 +1,30 @@
+.toc-container {
+  border: 2px solid #086ad8;
+  width: auto;
+  padding: 10px;
+  margin-bottom: 1em;
+  display: table;
+  font-size: 95%;
+}
+.toc-container.contracted {
+  width: 100%;
+}
+.toc-container > ul {
+  display: none;
+  margin-top: 1em;
+}
+.toc-container p.toc_title {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 0 !important;
+}
+.toc-container p.toc_title a:hover, .toc-container p.toc_title ul a:hover {
+  color: var(--color-1st);
+}
+.toc-container p.toc_title a:visited, .toc-container p.toc_title ul a:visited {
+  color: var(--color-1st);
+}
+.toc-container span.toc_toggle {
+  font-weight: 400;
+  font-size: 90%;
+}

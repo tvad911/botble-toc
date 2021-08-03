@@ -1,0 +1,9 @@
+{
+    "name": "Table of Content",
+    "namespace": "Botble\\Toc\\",
+    "provider": "Botble\\Toc\\Providers\\TocServiceProvider",
+    "author": "Ánh Dương",
+    "url": "",
+    "version": "1.0",
+    "description": "A custom of Table of Contents"
+}
