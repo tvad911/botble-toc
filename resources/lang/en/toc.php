@@ -10,9 +10,8 @@ return [
     'toc_show_when'                   => 'Show when',
     'toc_show_hierarchy'              => 'Show hierarchy',
     'toc_number_list_item'            => 'Show number list item',
-    'toc_number_smooth_scroll'        => 'Smooth scroll',
-    'toc_hyphenate'                   => 'Hyphenate',
     'toc_appearance_exclude_headings' => 'Appearance exclude headings',
+    'toc_bullet_spacing'              => 'Preserve theme bullets',
 
     'before_first_heading'            => 'Before first heading',
     'after_first_heading'             => 'After first heading',

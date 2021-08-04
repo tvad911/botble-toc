@@ -16,6 +16,4 @@ return [
     'heading_levels'          => ['2', '3', '4', '5', '6'],
     'css_container_class'     => '',
     'show_option_in_form'     => true,
-    'default_option_in_form'  => 1,
-    'context_sidebar_in_form' => 'side', // 'top' || 'side'
 ];

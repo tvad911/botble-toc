@@ -24,11 +24,21 @@ class TocHelper
     public function __construct()
     {
         $this->options = config('plugins.toc.general', []);
+        $this->getOption();
         $this->theTag = '<!--Toc-->';
         $this->tocShortcode = '[toc][/toc]';
         $this->noTocShortcode = '[no-toc][/no-toc]';
         $this->noTocTag = '<!--No_Toc-->';
         $this->show_toc = true;
+    }
+
+    private function getOption()
+    {
+        $this->options['position'] = theme_option('toc_position', config('plugins.toc.general.position'));
+        $this->options['start'] = theme_option('toc_show_when', config('plugins.toc.general.start'));
+        $this->options['show_heirarchy'] = theme_option('toc_show_hierarchy') == 1 ? true : config('plugins.toc.general.show_heirarchy');
+        $this->options['ordered_list'] = theme_option('toc_number_list_item') == 1 ? true : config('plugins.toc.general.ordered_list');
+        $this->options['exclude'] = theme_option('appearance_exclude_headings') ? theme_option('appearance_exclude_headings') : '';
     }
 
     public function replaceShortcode($content)
@@ -135,7 +145,7 @@ class TocHelper
                             $content = $this->mbFindReplace($find, $replace, $content);
                         } else {
                             if (count($find) > 0) {
-                                switch (Arr::get($this->options, 'option')) {
+                                switch (Arr::get($this->options, 'position')) {
                                     case 'top':
                                         $content = $html . $this->mbFindReplace($find, $replace, $content);
                                         break;
@@ -253,7 +263,6 @@ class TocHelper
                         if (in_array($matches[$i][2], Arr::get($this->options, 'heading_levels'))) {
                             $newMatches[] = $matches[$i];
                         }
-
                     }
                     $matches = $newMatches;
                 }
@@ -340,7 +349,6 @@ class TocHelper
                     if (Arr::get($this->options, 'show_heirarchy')) {
                         $items = $this->buildHierarchy($matches);
                     }
-
                 }
             }
         }

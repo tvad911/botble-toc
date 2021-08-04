@@ -30,17 +30,17 @@ class HookServiceProvider extends ServiceProvider
             add_action(RENDERING_THEME_OPTIONS_PAGE, [$this, 'addThemeOptions'], 35);
         }
 
-        add_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, [$this, 'addToCContent'], 56, 2);
+        add_action(BASE_ACTION_PUBLIC_RENDER_SINGLE, [$this, 'addTocContent'], 56, 2);
     }
 
     /**
      * @param string $screen
      * @param BaseModel $object
      */
-    public function addToCContent($screen, $object)
+    public function addTocContent($screen, $object)
     {
         if ($object) {
-            $showToC = theme_option('toc_enable') ?: config('plugins.toc.general.default_option_in_form');
+            $showToC = theme_option('toc_enable');
 
             if ($showToC == 1) {
                 Theme::asset()
@@ -147,11 +147,11 @@ class HookServiceProvider extends ServiceProvider
                         ],
                     ],
                     [
-                        'id'         => 'toc_number_smooth_scroll',
+                        'id'         => 'toc_bullet_spacing',
                         'type'       => 'onOff',
-                        'label'      => trans('plugins/toc::toc.toc_number_smooth_scroll'),
+                        'label'      => trans('plugins/toc::toc.toc_bullet_spacing'),
                         'attributes' => [
-                            'name'    => 'toc_number_smooth_scroll',
+                            'name'    => 'toc_bullet_spacing',
                             'value' => 0,
                             'data' => [
                                 0 => 'No',
@@ -161,18 +161,7 @@ class HookServiceProvider extends ServiceProvider
                                 'class' => 'form-control',
                             ],
                         ],
-                    ],
-                    [
-                        'id'         => 'toc_hyphenate',
-                        'type'       => 'text',
-                        'label'      => trans('plugins/toc::toc.toc_hyphenate'),
-                        'attributes' => [
-                            'name'    => 'toc_hyphenate',
-                            'value'   => null,
-                            'options' => [
-                                'class'        => 'form-control',
-                            ],
-                        ],
+                        'helper' => __('If your theme includes background images for unordered list elements, enable this to support them'),
                     ],
                     [
                         'id'         => 'appearance_exclude_headings',
@@ -185,6 +174,10 @@ class HookServiceProvider extends ServiceProvider
                                 'class'        => 'form-control',
                             ],
                         ],
+                        'helper' => __('Specify headings to be excluded from appearing in the table of contents. Separate multiple headings with a pipe |. Use an asterisk * as a wildcard to match other text. Note that this is not case sensitive. Some examples:
+Fruit* ignore headings starting with "Fruit"
+*Fruit Diet* ignore headings with "Fruit Diet" somewhere in the heading
+Apple Tree|Oranges|Yellow Bananas ignore headings that are exactly "Apple Tree", "Oranges" or "Yellow Bananas"'),
                     ]
                 ],
             ]);

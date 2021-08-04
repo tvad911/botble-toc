@@ -1,8 +1,8 @@
 /******/ (() => { // webpackBootstrap
 var __webpack_exports__ = {};
-/*!**************************************************************!*\
-  !*** ./platform/plugins/toc-main/resources/assets/js/toc.js ***!
-  \**************************************************************/
+/*!*********************************************************!*\
+  !*** ./platform/plugins/toc/resources/assets/js/toc.js ***!
+  \*********************************************************/
 $(function () {
   if (window.location.hash && $('.toc-container ul').length) {
     scrollToElement(window.location.hash);
