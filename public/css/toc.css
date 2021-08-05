@@ -1,22 +1,3 @@
-.toc-container ul, .toc-container li {
-  margin: 0;
-  padding: 0;
-}
-.toc-container.no_bullets ul, .toc-container.no_bullets li, .toc-container.no_bullets ul li {
-  background: none;
-  list-style-type: none;
-  list-style: none;
-}
-.toc-container.no_bullets ul {
-  padding-left: 0;
-}
-.toc-container.have_bullets ul {
-  padding-left: 0;
-}
-.toc-container.contracted {
-  width: 100%;
-}
-
 .toc-container {
   background: #f9f9f9;
   border: 1px solid #aaa;
@@ -26,8 +7,33 @@
   display: table;
   font-size: 95%;
 }
-.toc-container.have_bullets li {
-  padding-left: 12px;
+.toc-container ul,
+.toc-container li {
+  margin: 0;
+  padding: 0;
+}
+.toc-container.no_bullets ul,
+.toc-container.no_bullets li,
+.toc-container.no_bullets ul li {
+  background: none;
+  list-style-type: none;
+  list-style: none;
+}
+.toc-container.no_bullets ul {
+  padding-left: 0;
+}
+.toc-container.contracted {
+  width: 100%;
+}
+.toc-container a {
+  text-decoration: none;
+  text-shadow: none;
+}
+.toc-container a:hover {
+  text-decoration: underline;
+}
+.toc-container.have_bullets ul {
+  padding-left: 10px;
 }
 .toc-container ul ul {
   margin-left: 1.5em;
@@ -69,12 +75,4 @@
 .toc_wrap_right {
   float: right;
   margin-left: 10px;
-}
-
-.toc-container a {
-  text-decoration: none;
-  text-shadow: none;
-}
-.toc-container a:hover {
-  text-decoration: underline;
 }
