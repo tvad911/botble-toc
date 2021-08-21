@@ -17,13 +17,13 @@ class HookServiceProvider extends ServiceProvider
             add_shortcode('toc', trans('plugins/toc::toc.toc_shortcode'),
                 trans('plugins/toc::toc.toc_short_code_description'), [$this, 'tocShortcode']);
 
-             add_shortcode('no-toc', trans('plugins/toc::toc.no_toc_shortcode'),
+            add_shortcode('no-toc', trans('plugins/toc::toc.no_toc_shortcode'),
                 trans('plugins/toc::toc.no_toc_short_code_description'), [$this, 'noTocShortcode']);
 
             shortcode()
-                    ->setAdminConfig('toc', view('plugins/toc::partials.short-code-toc-admin-config')->render());
+                ->setAdminConfig('toc', view('plugins/toc::partials.short-code-toc-admin-config')->render());
             shortcode()
-                    ->setAdminConfig('no-toc', view('plugins/toc::partials.short-code-no-toc-admin-config')->render());
+                ->setAdminConfig('no-toc', view('plugins/toc::partials.short-code-no-toc-admin-config')->render());
         }
 
         if (function_exists('theme_option')) {
@@ -61,18 +61,18 @@ class HookServiceProvider extends ServiceProvider
     {
         theme_option()
             ->setSection([
-                'title'      => 'Table of content Plus',
-                'desc'       => 'Table of content',
-                'id'         => 'opt-text-subsection-toc',
+                'title' => 'Table of content Plus',
+                'desc' => 'Table of content',
+                'id' => 'opt-text-subsection-toc',
                 'subsection' => true,
-                'icon'       => 'fa fa-edit',
-                'fields'     => [
+                'icon' => 'fa fa-edit',
+                'fields' => [
                     [
-                        'id'         => 'toc_enable',
-                        'type'       => 'onOff',
-                        'label'      => trans('plugins/toc::toc.toc_enable'),
+                        'id' => 'toc_enable',
+                        'type' => 'onOff',
+                        'label' => trans('plugins/toc::toc.toc_enable'),
                         'attributes' => [
-                            'name'    => 'toc_enable',
+                            'name' => 'toc_enable',
                             'value' => 0,
                             'data' => [
                                 0 => 'No',
@@ -84,42 +84,42 @@ class HookServiceProvider extends ServiceProvider
                         ],
                     ],
                     [
-                        'id'         => 'toc_position',
-                        'type'       => 'select',
-                        'label'      => trans('plugins/toc::toc.toc_position'),
+                        'id' => 'toc_position',
+                        'type' => 'select',
+                        'label' => trans('plugins/toc::toc.toc_position'),
                         'attributes' => [
-                            'name'    => 'toc_position',
-                            'data'    => [
+                            'name' => 'toc_position',
+                            'data' => [
                                 'before-first-heading' => trans('plugins/toc::toc.before_first_heading'),
-                                'after-first-heading'  => trans('plugins/toc::toc.after_first_heading'),
-                                'top'                  => trans('plugins/toc::toc.top'),
-                                'bottom'               => trans('plugins/toc::toc.bottom'),
+                                'after-first-heading' => trans('plugins/toc::toc.after_first_heading'),
+                                'top' => trans('plugins/toc::toc.top'),
+                                'bottom' => trans('plugins/toc::toc.bottom'),
                             ],
-                            'value'   => null,
+                            'value' => null,
                             'options' => [
                                 'class' => 'form-control',
                             ],
                         ],
                     ],
                     [
-                        'id'         => 'toc_show_when',
-                        'type'       => 'select',
-                        'label'      => trans('plugins/toc::toc.toc_show_when'),
+                        'id' => 'toc_show_when',
+                        'type' => 'select',
+                        'label' => trans('plugins/toc::toc.toc_show_when'),
                         'attributes' => [
-                            'name'    => 'toc_show_when',
-                            'list'    => [2, 3, 4, 5, 6],
-                            'value'   => '',
+                            'name' => 'toc_show_when',
+                            'list' => [2, 3, 4, 5, 6],
+                            'value' => '',
                             'options' => [
                                 'class' => 'form-control',
                             ],
                         ],
                     ],
                     [
-                        'id'         => 'toc_show_hierarchy',
-                        'type'       => 'onOff',
-                        'label'      => trans('plugins/toc::toc.toc_show_hierarchy'),
+                        'id' => 'toc_show_hierarchy',
+                        'type' => 'onOff',
+                        'label' => trans('plugins/toc::toc.toc_show_hierarchy'),
                         'attributes' => [
-                            'name'    => 'toc_show_hierarchy',
+                            'name' => 'toc_show_hierarchy',
                             'value' => 1,
                             'data' => [
                                 0 => 'No',
@@ -131,11 +131,11 @@ class HookServiceProvider extends ServiceProvider
                         ],
                     ],
                     [
-                        'id'         => 'toc_number_list_item',
-                        'type'       => 'onOff',
-                        'label'      => trans('plugins/toc::toc.toc_number_list_item'),
+                        'id' => 'toc_number_list_item',
+                        'type' => 'onOff',
+                        'label' => trans('plugins/toc::toc.toc_number_list_item'),
                         'attributes' => [
-                            'name'    => 'toc_number_list_item',
+                            'name' => 'toc_number_list_item',
                             'value' => 0,
                             'data' => [
                                 0 => 'No',
@@ -147,11 +147,11 @@ class HookServiceProvider extends ServiceProvider
                         ],
                     ],
                     [
-                        'id'         => 'toc_bullet_spacing',
-                        'type'       => 'onOff',
-                        'label'      => trans('plugins/toc::toc.toc_bullet_spacing'),
+                        'id' => 'toc_bullet_spacing',
+                        'type' => 'onOff',
+                        'label' => trans('plugins/toc::toc.toc_bullet_spacing'),
                         'attributes' => [
-                            'name'    => 'toc_bullet_spacing',
+                            'name' => 'toc_bullet_spacing',
                             'value' => 0,
                             'data' => [
                                 0 => 'No',
@@ -164,14 +164,14 @@ class HookServiceProvider extends ServiceProvider
                         'helper' => __('If your theme includes background images for unordered list elements, enable this to support them'),
                     ],
                     [
-                        'id'         => 'appearance_exclude_headings',
-                        'type'       => 'text',
-                        'label'      => trans('plugins/toc::toc.toc_appearance_exclude_headings'),
+                        'id' => 'appearance_exclude_headings',
+                        'type' => 'text',
+                        'label' => trans('plugins/toc::toc.toc_appearance_exclude_headings'),
                         'attributes' => [
-                            'name'    => 'appearance_exclude_headings',
-                            'value'   => null,
+                            'name' => 'appearance_exclude_headings',
+                            'value' => null,
                             'options' => [
-                                'class'        => 'form-control',
+                                'class' => 'form-control',
                             ],
                         ],
                         'helper' => __('Specify headings to be excluded from appearing in the table of contents. Separate multiple headings with a pipe |. Use an asterisk * as a wildcard to match other text. Note that this is not case sensitive. Some examples:

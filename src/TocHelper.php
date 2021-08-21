@@ -32,6 +32,10 @@ class TocHelper
         $this->show_toc = true;
     }
 
+    /**
+     * Get theme_options value
+     * @return [type] [description]
+     */
     private function getOption()
     {
         $this->options['position'] = theme_option('toc_position', config('plugins.toc.general.position'));
@@ -41,6 +45,11 @@ class TocHelper
         $this->options['exclude'] = theme_option('appearance_exclude_headings') ? theme_option('appearance_exclude_headings') : '';
     }
 
+    /**
+     * Replace shortcode to text
+     * @param  [type] $content [description]
+     * @return [type]          [description]
+     */
     public function replaceShortcode($content)
     {
         $temp1 = str_replace($this->tocShortcode, $this->theTag, $content);
@@ -49,6 +58,11 @@ class TocHelper
         return $content;
     }
 
+    /**
+     * Remove tag
+     * @param  [type] $content [description]
+     * @return [type]          [description]
+     */
     public function removeTag($content)
     {
         $temp1 = str_replace($this->theTag, '', $content);
@@ -68,8 +82,7 @@ class TocHelper
         $replace = [];
         $items = $this->extractHeadings($find, $replace, $content);
 
-        if(theme_option('toc_enable') == 1)
-        {
+        if (theme_option('toc_enable') == 1) {
             if ($items) {
 
                 $cssClasses = trim(Arr::get($this->options, 'css_container_class'));
@@ -102,10 +115,9 @@ class TocHelper
                     }
                 }
             }
-        }
-        else{
+        } else {
             // remove <!--Toc--> (inserted from shortcode) from content
-            $content = str_replace( $this->theTag, '', $content );
+            $content = str_replace($this->theTag, '', $content);
         }
 
         return $content;
@@ -125,14 +137,13 @@ class TocHelper
 
         // Case 1: Post type
         // Check enable TOC
-        if(theme_option('toc_enable') == 1) {
+        if (theme_option('toc_enable') == 1) {
             // Check class in post type
-            if($this->isSupportedModel(get_class($object))) {
+            if ($this->isSupportedModel(get_class($object))) {
                 // Check remove Toc
-                if($checkRemoveToc) {
-                    $content =  $this->removeTag($content);
-                }
-                else{
+                if ($checkRemoveToc) {
+                    $content = $this->removeTag($content);
+                } else {
                     if ($items) {
                         $cssClasses = trim(Arr::get($this->options, 'css_container_class'));
 
@@ -165,14 +176,11 @@ class TocHelper
                         }
                     }
                 }
-            }
-            else
-            {
+            } else {
                 // Check remove Toc
-                if($checkRemoveToc) {
-                    $content =  $this->removeTag($content);
-                }
-                else{
+                if ($checkRemoveToc) {
+                    $content = $this->removeTag($content);
+                } else {
                     if ($items) {
                         $cssClasses = trim(Arr::get($this->options, 'css_container_class'));
 
@@ -187,10 +195,9 @@ class TocHelper
                     }
                 }
             }
-        }
-        else{
+        } else {
             // remove <!--Toc--> (inserted from shortcode) from content
-            $content = str_replace( $this->theTag, '', $content );
+            $content = str_replace($this->theTag, '', $content);
         }
 
         return $content;
@@ -215,7 +222,8 @@ class TocHelper
                     $string =
                         mb_substr($string, 0, mb_strpos($string, $find[$i])) . // everything before $find
                         $replace[$i] . // its replacement
-                        mb_substr($string, mb_strpos($string, $find[$i]) + mb_strlen($find[$i])) // everything after $find
+                        mb_substr($string,
+                            mb_strpos($string, $find[$i]) + mb_strlen($find[$i])) // everything after $find
                     ;
                 }
             } else {
@@ -355,6 +363,7 @@ class TocHelper
 
         return $items;
     }
+
     /**
      * @param array $matches
      * @return string
@@ -367,7 +376,7 @@ class TocHelper
         // find the minimum heading to establish our baseline
         for ($i = 0; $i < count($matches); $i++) {
             if ($currentDepth > $matches[$i][2]) {
-                $currentDepth = (int) $matches[$i][2];
+                $currentDepth = (int)$matches[$i][2];
             }
         }
 

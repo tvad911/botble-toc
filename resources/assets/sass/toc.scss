@@ -14,6 +14,9 @@
             background: none;
             list-style-type: none;
             list-style: none;
+
+            word-wrap: break-word;
+            font-size: 16px;
         }
 
         ul {
@@ -31,6 +34,12 @@
 
         &:hover {
             text-decoration: underline;
+        }
+
+        &:link, &:visited {
+            color: #007bb6;
+            text-decoration: none;
+            outline: 0;
         }
     }
 
@@ -73,6 +82,7 @@
         font-weight: 700;
         margin: 0;
         padding: 0;
+        font-size: 16px !important;
     }
 
     &.toc_black p.toc_title {
